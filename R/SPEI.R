@@ -19,7 +19,7 @@ SPEI_coor <- transform(df, lon_SPEI = longRang$longGR[findInterval(longitude, lo
   transform(lat_SPEI = latRang$latGR[findInterval(latitude, latRang$latST)]) %>% # classify the latitude
   mutate(coor_SPEI = paste0(lon_SPEI, "_", lat_SPEI)) # creates coordinates for the later selection
 
-# loading the files of the SPEI here 1, 6, 12, 18, 24 months
+# loading the files of SPEI data out of the data folder
 fl <- list.files('data','*.nc',full.names=TRUE)
 d <- list()
 for (i in 1:length(fl)) {
