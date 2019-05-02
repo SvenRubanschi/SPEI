@@ -1,3 +1,5 @@
+# This script will add the SPEI for 1 , 6, 12 and 24 months
+
 library(dplyr)
 library(tidyr)
 library(ncdf4)
@@ -41,7 +43,7 @@ for(i in 1:nlevels(as.factor(SPEI_coor$coor_SPEI))){
   t <- length(tims)
   # creating a matrix for the values
   a <- matrix(NA, ncol = 5, nrow = t)
-  scales <- c("01","06","12","18","24")
+  scales <- c("01","06","12","24")
   colnames(a) <- paste('SPEI_',scales,sep='')
   # extracting the data out of the .nc
   for (s in 1:length(fl)) {
@@ -66,6 +68,6 @@ for(i in 1:nlevels(as.factor(SPEI_coor$coor_SPEI))){
 }
 
 df <- df %>%
-  select(plotcode, longitude, latitude, date_OBS, SPEI_01, SPEI_06, SPEI_12, SPEI_18, SPEI_24)
+  select(plotcode, longitude, latitude, date_OBS, SPEI_01, SPEI_06, SPEI_12, SPEI_24)
 
 df
