@@ -1,0 +1,1 @@
+Insert average temperature dataset (tavg) from WorldClim (http://worldclim.org/version2)

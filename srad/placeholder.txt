@@ -1,0 +1,1 @@
+Insert solar radiation dataset (srad) from WorldClim (http://worldclim.org/version2)
