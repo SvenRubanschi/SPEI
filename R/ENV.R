@@ -92,18 +92,21 @@ vapr_data <- data.frame(plotcode = df_vapr[,1], mean_vapr = rowMeans(df_vapr[,4:
 
 # Elevation ---------------------------------------------------------------
 
-
+# long 30:60; lat 30:60
 r1 <- getData("worldclim", var = "alt", res = 0.5, lon = 30, lat = 60)
 r2 <- getData("worldclim", var = "alt", res = 0.5, lon = 0, lat = 60)
 r3 <- getData("worldclim", var = "alt", res = 0.5, lon = -30, lat = 60)
 r4 <- getData("worldclim", var = "alt", res = 0.5, lon = 30, lat = 90)
 r5 <- getData("worldclim", var = "alt", res = 0.5, lon = 0, lat = 90)
 r6 <- getData("worldclim", var = "alt", res = 0.5, lon = -30, lat = 90)
+
 x <- list(r1, r2, r3, r4, r5, r6)
+x$filename <- 'alt.tif'
+x$overwrite <- TRUE
 m <- do.call(merge, x)
 
 points <- SpatialPoints(coords[c(2,3)], proj4string = m@crs)
 
-values <- extract(m,points)
+values <- extract(m, points)
 
 elevation <- data.frame(coords, elevation = values)
